@@ -372,7 +372,7 @@ Output:
  No more berries left
  ```
 
- Herhalingen onderbreken
+ Herhalingen **onderbreken**
 - `break;` de volledige herhaling wordt gestopt - voorwaarde wordt niet getest
 ```javascript
 function doJumpingOut() {
@@ -468,15 +468,15 @@ Uitvoeren:
 functionname(arg1, arg2,….argx);
 ```
 Gebruik van bestaande functies:
-- Alert box (pop-up met een "Ok" knop): 
+- **Alert box** (pop-up met een "Ok" knop): 
 ```javascript
 alert("sometext")
 ```
-- Confirm box (pop-up met een "Ok" -en een "Annuleren" knop)
+- **Confirm box** (pop-up met een "Ok" -en een "Annuleren" knop)
 ```javascript
 confirm("sometext")
 ```
-- Prompt box (pop-up met een "Ok" -en "Annuleren" knop, en met een tekstveld)
+- **Prompt box** (pop-up met een "Ok" -en "Annuleren" knop, en met een tekstveld)
     - Als geen defaultValue voorzien wordt null geretourneerd
 ```javascript
 prompt("sometext","defaultValue")
@@ -519,3 +519,193 @@ sayHi('Bob'); //alert: Hi, my name is Bob
 ## **Arrays**
 
 > ## **Arrays**
+- Een array is een geordende verzameling van elementen. De elementen mogen van een verschillend type zijn
+- Elk element heeft een genummerde positie in de array, **index** genaamd. (**eerste element heeft index 0**)
+- Arrays zijn dynamisch
+- Notatie:
+```javascript
+[]
+```
+**Declaratie** van een lege array op twee manieren:
+```javascript
+let pizzas = [];
+
+let pizzas = new Array();
+```
+Waarden van mogelijks verschillende types in een array **plaatsen**
+```javascript
+pizzas[0] = 'Margherita';
+pizzas[1] = 'Mushroom';
+pizzas[2] = 'Spinach & Rocket';
+```
+Waarden uit een array **wijzigen**
+```javascript
+pizzas[0] = 'Ham & Pineapple';
+```
+**Aanmaken** van array via **array literal**
+```javascript
+let pizzas =
+['Margherita', 'Mushroom', 'Spinach & Rocket', 'Pineapple & Sweetcorn'];
+```
+Voorbeeld met elementen van verschillend type
+```javascript
+let mixedArray = [null, 1, 'two', true, undefined ];
+```
+**Opvragen van 1 element** adhv de index
+    - `index` start vanaf 0, gebruik `[]`
+    - `length`: aantal elementen in een array
+```javascript
+const pizzas =
+    ['Margherita', 'Mushroom', 'Spinach & Rocket', 'Pineapple & Sweetcorn'];
+
+console.log(pizzas[2]); //Spinach & Rocket
+console.log(`eerste pizza ${pizzas[0]}`); //Margherita
+console.log(`laatste pizza ${pizzas[pizzas.length-1]}`); //Pineapple & Sweetcorn
+```
+**Volledige array printen**
+```javascript
+console.log(pizzas); //Array(4) ['Margherita', 'Mushroom', 'Spinach & Rocket', 'Pineapple & Sweetcorn'];
+```
+**Verwijderen** van een element in de array
+    - Verwijdert de waarde op deze positie, maar de ruimte bestaat nog steeds en bevat nu de waarde `undefined`.
+```javascript
+const pizzas =
+    ['Margherita', 'Mushroom', 'Spinach & Rocket', 'Pineapple & Sweetcorn'];
+
+delete pizzas[2];
+
+console.log(pizzas); // ['Margherita', 'Mushroom', undefined, 'Pineapple & Sweetcorn']; 
+```
+**Overlopen** van een array
+- `for-loop`
+```javascript
+const pizzas =
+    ['Margherita', 'Mushroom', 'Spinach & Rocket', 'Pineapple & Sweetcorn'];
+
+for (let i = 0; i < pizzas.length; i++) {
+    console.log(pizzas[i]);
+}
+```
+- `for-of loop`
+```javascript
+const pizzas =
+    ['Margherita', 'Mushroom', 'Spinach & Rocket', 'Pineapple & Sweetcorn'];
+for (let value of pizzas) {
+    console.log(value);
+}
+```
+- Merk op:
+```javascript
+const pizzas =
+    ['Margherita', 'Mushroom', 'Spinach & Rocket', 'Pineapple & Sweetcorn'];
+pizzas[30] = 'Vegetarian';
+console.log(pizzas.length); // 31
+console.log(pizzas[20]); //undefined
+```
+`pop` **vewrijdert het laatste element** uit de array en retourneert dit element
+```javascript
+pizzas.pop(); // << 'Spinach & Rocket'
+```
+`push` **voegt één of meerdere waarden toe aan het einde** van de array en retourneert de nieuwe lengte van de array.
+```javascript
+pizzas.push('Pepperoni'); // << 3
+```
+`shift` **verwijdert de eerste waarde** in array en returnt deze
+```javadoc
+pizzas.shift(); //<< 'Margherita'
+```
+`unshift` **voegt één of meerdere waarden toe aan het begin** van het array en **returnt de nieuwe lengte** van de array.
+```javascript
+pizzas.unshift('Chicken & Bacon'); //<< 3
+```
+**Zoeken** of een waarde voorkomt in een array met `indexOf`
+- Retourneert index van eerste voorkomen of -1 als waarde niet voorkomt.
+```javascript
+const pizzas = ['Margherita', 'Mushroom', 'Spinach & Rocket];
+pizzas.indexOf('Spicy Beef'); //<< -1
+pizzas.indexOf('Margherita'); //<< 0
+```
+Andere Array methodes: 
+- `concat()`: Voegt 2 arrays samen
+- `reverse()`: Keert de volgorde van de array elementen om
+- `slice(start_index, upto_index)`: Returnt een nieuw array als een stuk van de oorspronkelijke array met als argumenten de begin- en een eindpositie.
+- `splice(start_index, numberofitemsToRemove, waarde1,…, waardex)`: Verwijdert numberofItemsToRemove waarden uit de array startend op positie start_index en voegt dan de nieuwe waarden toe waarde1,… waardex
+- `sort()`: Sorteert de elementen in de array
+- `indexOf(searchElement[, fromIndex])`: De index van het eerste voorkomen van het element vanaf fromIndex
+- `lastIndexOf(searchElement[, fromIndex])`: Idem indexOf maar begint achteraan
+- `join()`: Converteert alle elementen van een array tot 1 lange string 
+
+**Destructuring**
+- Is een manier om **meerdere waarden te extraheren** uit een array en **toe te kennen aan variabelen**
+```javascript
+//Variabele declaraties
+//ophalen van eerste en tweede item uit een array
+pizzas = ['Margherita', 'Mushroom', 'Spinach & Rocket', 'Chicken & Bacon’];
+const [eerstePizza, tweedePizza] = pizzas;
+console.log(eerstePizza); // Margherita
+console.log(tweedePizza); // Mushroom
+
+//ophalen van derde item uit een array
+const [, , derdePizza] = pizzas;
+console.log(derdePizza); //Spinach & Rocket
+
+//Destructuring Assignment
+pizzas = ['Margherita', 'Mushroom', 'Spinach & Rocket'];
+let pizza1, pizza2;
+[pizza1, pizza2] = pizzas;
+console.log(pizza1); // Margherita
+console.log(pizza2); // Mushroom
+
+//default values
+pizzas = ['Margherita'];
+[pizza1, pizza2 = 'Mushrooms' ] = pizzas;
+console.log(pizza1); // Margherita
+console.log(pizza2); // Mushrooms
+
+// Swapping variables in ECMAScript 5
+let a = 1,b = 2, tmp;
+tmp = a;
+a = b;
+b = tmp;
+console.log(a); // 2
+console.log(b); // 1
+
+// Swapping variables in ECMAScript 6
+a = 1;
+b = 2;
+[ a, b ] = [ b, a ];
+console.log(a); // 2
+console.log(b); // 1
+```
+Meerdimensionele arrays
+- een array van een array = **2 dimensionale array**
+- een array van een array van een array = **3 dimensionale array**
+- Voorbeeld : een array die de kaarten van 2 poker hands bevat
+```javascript
+const hands = [];
+hands[0] = [5,'A',3,'J',3];
+hands[1] = [7,'K',3,'J',3];
+console.log ('2de kaart, 2de hand : ' + hands[1][1]);
+```
+- Voorbeeld 2-dimentionale array
+    - Een schaakbord, voorgesteld als een 2 dimensionele array van
+        strings. De eerste zet verplaatst ‘p’ van positie (6,4) naar (4,4). 6,4
+        wordt op blanco geplaatst
+```javascript
+function doArray() {
+const board = [
+['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
+['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r']];
+
+console.log(board.join('\n') + '\n\n');
+board[4][4] = board[6][4]; // Move King's Pawn forward 2
+board[6][4] = ' ';
+console.log(board.join('\n'));
+}
+```
