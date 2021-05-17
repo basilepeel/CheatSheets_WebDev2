@@ -403,3 +403,4 @@ Berekeningsoperatoren:
 - +, -, *, /, %, ++, --, unary -, unary +
 Toewijzingsoperatoren:
 - =, *=, /=, %=, +=, -=, <<=, >>=, >>>=, &=, ^=, |=
+Vergelijkingsoperatoren
