@@ -1,4 +1,4 @@
-# **Hoofdstuk 2**
+# **Hoofdstuk 2: Objecten en Functies**
 
 
 ## **Objecten**
