@@ -213,8 +213,9 @@ undefined
 -kan aangemaakt worden 'at run-time'
 
 >### Functie expressie
-kent een variabele toe aan een functie
+Kent een variabele toe aan een functie
 - kan anoniem zijn (de functie heeft geen naam)
+- kan deze variabele als parameter gebruiken
 ```javascript
 const dyeHair = function (avatar, color) {
     avatar.hair.color = color;
@@ -224,10 +225,39 @@ const makeColor = function() {
     return "green";
 }
 
-dyeHair(myAvatar);
+dyeHair(myAvatar, makeColor);
+concole.log(`myAvatar.hair.color = ${myAvatar.hair.color}`);
+//print -> myAvatar.hair.color = green
 ```
 
->### Functies volgen regels van va
+>### Scope van variabelen
+
+- Variabelen en de parameters, gedeclareerd in een functie, zijn enkel binnen de functie toegankelijk
+- **Scope chaining**: de functie heeft ook toegang tot variabelen uit de scope waarin de functie werd gedeclareerd
+
+Voorbeeld:
+```javascript
+let globalX = "global X";
+let cupOfTea = "Camomille";
+let outerFunction = function(param1, param2) {
+    let outerX = "outer X";
+    let cupOfTea = "Fennel"; //verbergt cupOfTea van global scope
+    let cupOfCoffee = "Cappuccino";
+    let innerFunction = function(param1, param3) { //verbergt param1 van outerFunction
+        let innerX = "inner X";
+        let cupOfCoffee = "Espresso";
+    };
+};
+```
+
+**Om temporal dead zones te vermijden declareer je locale variabelen bovenaan de functie**
+
+>### Arrow Functies
+- Compactere syntax om functie expressies te schrijven (altijd anoniem)
+```javascript
+const functieNaam = (a, b, c) => a + b + c;
+```
+Retourneert de som van de parameters a, b en c
 
 
 
