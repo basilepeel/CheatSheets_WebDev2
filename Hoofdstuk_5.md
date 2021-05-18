@@ -181,7 +181,7 @@ let user = {
 
 De JSON (JavaScript Object Notation) is een **algemeen formaat** om waarden en objecten weer te geven. Het wordt beschreven zoals in de RFC 4627-standaard. Aanvankelijk werd het gemaakt voor JavaScript, maar veel andere talen hebben ook bibliotheken om er mee om te gaan. Het is dus gemakkelijk om JSON te gebruiken voor **data-uitwisseling** als de client JavaScript gebruikt en de server geschreven is in Ruby/PHP/Java/C#/**Whatever**.
 
-Voorbeeld syntax
+Voorbeeld syntax:
 ```javascript
 JSON.parse(text[, reviver])
 JSON.stringify(value[, replacer[, space]])
