@@ -176,8 +176,8 @@ let user = {
 ***Maar... "this can become a maintenance nightmare", want door het ontwikkelen worden er vaak eigenschappen toegevoegd en kan dit al snel vergeten worden.***
 
 ## **JavaScript Object Notation**
->### **Definitie**
 *snap ik zelf niet zo goed, voor meer uitleg klik [hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON).*
+>### **Definitie**
 
 De JSON (JavaScript Object Notation) is een **algemeen formaat** om waarden en objecten weer te geven. Het wordt beschreven zoals in de RFC 4627-standaard. Aanvankelijk werd het gemaakt voor JavaScript, maar veel andere talen hebben ook bibliotheken om er mee om te gaan. Het is dus gemakkelijk om JSON te gebruiken voor **data-uitwisseling** als de client JavaScript gebruikt en de server geschreven is in Ruby/PHP/Java/C#/**Whatever**.
 
