@@ -259,6 +259,31 @@ const functieNaam = (a, b, c) => a + b + c;
 ```
 Retourneert de som van de parameters a, b en c
 
+## **Objecten en functies**
+- Een **methode** van een object is een **property** met als waarde een **functie** (methode en properties *zijn hetzelfde*)
+- Een methode van een object kan worden aangeroepen met de punt- of array-notatie
+
+```javascript
+const myAvatar = {
+    "name avatar": "Bob",
+    points: 20,
+    gender: "male",
+    hair: { color: "black",  cut: "punk"},
+    sayHi: function() {
+        const title = this.gender === "male" ? "Sir" : "Miss";
+        return `Hi, I am ${title} ${this.name}`;
+    }
+};
+console.log(myAvatar.sayHi()); //print -> Hi, I am Sir Bob
+```
+
+>### `this`
+- Binnen de body van een functie is de `this` variabele beschikbaar
+    - Als de functie gedefinieerd is in de **global scope** verwijst `this` naar het global object (in de browser is dat `window`)
+    - Als `this` gebruikt wordt in ee nmethode van een object verkrijg je een verwijzing naar het parent object waar de methode toe hoort
+-  <span style="color:rgb(170,20,10)">**Arrow functies** beschikken niet over hun *eigen* `this`, en dit maakt ze **ongeschikt** om als **methodes** gebruikt te worden<span>
+
+
 
 
 
