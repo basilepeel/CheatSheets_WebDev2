@@ -277,18 +277,131 @@ const myAvatar = {
 console.log(myAvatar.sayHi()); //print -> Hi, I am Sir Bob
 ```
 
->### `this`
+>### **`this`**
 - Binnen de body van een functie is de `this` variabele beschikbaar
     - Als de functie gedefinieerd is in de **global scope** verwijst `this` naar het global object (in de browser is dat `window`)
     - Als `this` gebruikt wordt in ee nmethode van een object verkrijg je een verwijzing naar het parent object waar de methode toe hoort
--  <span style="color:rgb(170,20,10)">**Arrow functies** beschikken niet over hun *eigen* `this`, en dit maakt ze **ongeschikt** om als **methodes** gebruikt te worden<span>
+- Gebruik steeds `this` om binnen een object naar één van zijn properties of methods te verwijzen
+-  !!! **Arrow functies** beschikken niet over hun *eigen* `this`, en dit maakt ze **ongeschikt** om als **methodes** gebruikt te worden !!!
+
+>### **Voor- en nadelen een object literal**
+- **Eenvoudig** instantie en gebruik van een object
+- Geen mogelijkheid om meerdere instanties van eenzelfde  **type** te maken
+- Geen afscherming van private en publieke properties/functies. alle code in een object is beschikbaar voor de buitenwereld en kan worden aangepast.
+    - gebruik `_` voor lokale variabelen en methodes om deze als *private* te beschouwen.
+
+## **Events**
+Een gebruiker interageert met een webpagina via **user interface**. <br>
+Een handeling op een HTML element zal resulteren in het afvuren van één of meerde events. Wanneer een event wordt afgevuurd, dan wordt de bijhorende **event handler** aangeroepen.<br>
+- Een event handler is een **functie**
+>### **Het `window` object**
+- Het `window` object is de globale scope in de browser
+>### **Het `document` object**
+- Het `document` object is  een property van het window object
+- Het heeft properties die object representaties van de HTML pagina bevatten (zie [Hoofdstuk 6: DOM](Hoofdstuk_6.md))
+```
+Elk HTML element van een pagina komt overeen met een javascript object
+
+De attributen van de HTML elementen zijn properties van dit object
+```
+
+>### **Voorbeeld `getElementById`**
+- Haalt object op met de HTML tag die overeenkomt met het `id`
 
 
+```html
+<body>
+    <h1>My avatar</h1>
+    <input type="button" id="sayHi" value="sayHi"/>
+    ...
+    <script src="events.js"></script>
+</body>
+```
+```javascript
+const sayHiButton = document.getElementById("sayHi");
+sayHiButton.value = "Yebo!";
+//value van de button verandert van sayHi naar Yebo!
+```
 
+>### **Events triggeren**
+- user generated (bv. keyboard/mouse events)
+- API generated (bv. animation finished running)
+- Event heeft
+    - een naam (bv. click, change, load, mouseover, keyup, focus...)
+    - een target (het element waarop het event van toepassing is bv. de button met id sayHi) 
+- Een event wordt voorzien van een **eventhandler** of **callback functie** (onlcik, onload, onmouseenter, ondbclick)
 
+>### **`load` event**
+- Wordt getriggerd bij het opstarten van de pagina
+- Best onderaan te plaatsen zodat ander variabelen al geïnitialiseerd zijn
+```javascript
+function init() {
 
+}
 
+window.onload = init();
+```
+
+>### **`addEventListener`**
+- Meerdere event handlers instellen voor eenzelfde event
+```javascript
+cosnt sayHiClicked = function() {
+    alert(myAvatar.sayHi());
+};
+
+const beClever = function() {
+    alert(`I know you clicked on the button that says ${this.value}`);
+};
+
+const init = function() {
+    const sayHiButton = document.getElementById("sayHi");
+    sayHiButton.addEventListener("click", sayHiClicked);
+    sayHiButton.addEventListener("click", beClever);
+}
+```
+
+## **Closures**
+
+*A **closure** is a function, whose return value depends on the value of one or more variables declared outside this function.<br>The function defined in the closure "remebers" the environment in which it was created.*
+
+- closures worden gecreëerd via **inner (geneste) functions**
 
 ```javascript
+const makeFunc = function() {
+    const message = "Sir bob is still around";
+    const displayName = function() {
+        console.log(message);
+    };
+    return displayName;
+};
 
+const aDisplayFunction = makeFunc();
+
+console.log(aDisplayFunction());
 ```
+- Parameters van de outer functie kunnen deel uitmaken van een closure
+
+## **Exceptions**
+Voorbeeld:
+```javascript
+try {
+    throw {
+        name: "SomethingWentWrongError",
+        message: "Something went wrong. You should fix it"
+    };
+} catch (e) {
+    //handel de exception hier af
+    console.log(`Error ${e.name}: ${e.message}`);
+} finally {
+    //code wordt uitgevoerd wanneer exception voorkomt
+}
+```
+Uitvoer:
+```
+Error SomethingWentWrongError: Something went wrong. You should fix it
+```
+>### **`throw`**
+- Gooit een excetion object
+>### **`try` ... `catch` ... `finally`**
+- Vangt de exception op
+
