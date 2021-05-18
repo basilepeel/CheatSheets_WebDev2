@@ -404,4 +404,3 @@ Error SomethingWentWrongError: Something went wrong. You should fix it
 - Gooit een excetion object
 >### **`try` ... `catch` ... `finally`**
 - Vangt de exception op
-
