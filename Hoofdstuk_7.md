@@ -215,4 +215,4 @@ p.then((resolveWaarde) => {
 - Promises maken het werken met asynchrone code een stuk aangenamer, perfect zijn ze natuurlijk niet.
 - Een eerste probleem is dat een promise altijd start, en altijd afgerond wordt, dus ook als er nooit iemand .then() aanroept, of als het resultaat je niet langer interesseert kan je een promise niet 'cancel'-en
 - Eenmaal een promise afgerond is, kan je ze ook niet makkelijk opnieuw uitvoeren, de promise zelf bevat enkel het resultaat.
-- Om deze problemen aan te pakken hebben we een andere constructie nodig: OBSERVABLES (Webapplicaties IV)
+- Om deze problemen aan te pakken hebben we een andere constructie nodig: OBSERVABLES (Webapplicaties IV).
