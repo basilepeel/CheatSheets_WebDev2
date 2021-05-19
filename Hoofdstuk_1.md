@@ -80,7 +80,7 @@ const
 JS kent 8 basis datatypes:
 ```javascript
 number      // getallen
-begint      // hele grote gehele getallen
+bigint      // hele grote gehele getallen
 string      // tekst bestaande uit 0 of meerdere karakters
 boolean     // logsiche waarden: true / false
 null        // voor ongekende waarden
