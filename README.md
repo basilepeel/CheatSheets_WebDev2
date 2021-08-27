@@ -1,6 +1,6 @@
 # CheatSheets Web Development 2 (HoGent) 
 ## (door Basile Peel & Henry Vergote, studenten Toegepaste Informatica (TI 1.08))
-### Deze bestanden zijn makkelijk te gebruiken in Visual Studio Code. 
+### Deze bestanden zijn makkelijk te gebruiken in Visual Studio Code zelf. 
 ### Indien u een PDF-bestend wenst, kunt u deze makkelijk converteren via deze website (opgepast, de originele lay-out kan wijzigen tijdens dit proces): https://www.markdowntopdf.com/
 <br>
 
